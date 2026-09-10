@@ -1,0 +1,290 @@
+{
+  "metadata": {
+    "size": 200,
+    "brand": "amazon",
+    "sampling_date": "2024-09-10",
+    "sampling_strategy": "stratified_by_intent_complexity_escalation"
+  },
+  "distribution": {
+    "order_status": 20,
+    "refund": 20,
+    "delivery_issue": 20,
+    "product_quality": 20,
+    "account_issue": 20,
+    "payment_issue": 20,
+    "return": 20,
+    "general_inquiry": 20,
+    "escalation": 10,
+    "compliment": 10
+  },
+  "examples": [
+    {
+      "id": 1,
+      "customer_message": "Where is my order? Order number 789123",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "clear_straightforward_inquiry",
+        "labeler_notes": "Routine tracking request - easy to auto-handle with order lookup",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 2,
+      "customer_message": "I placed an order 3 days ago and it hasn't updated. Is it even being shipped?",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_inquiry_with_mild_concern",
+        "labeler_notes": "Not angry, just seeking clarification. Standard order status follow-up.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 3,
+      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_inquiry_with_escalation_signals",
+        "labeler_notes": "Customer is frustrated after repeated attempts. Multiple punctuation + caps indicate frustration.",
+        "complexity": "medium",
+        "escalation_signals": ["all_caps", "multiple_punctuation", "repeated_question"]
+      }
+    },
+    {
+      "id": 4,
+      "customer_message": "Can I get a refund for this order? It's been sitting in my closet unopened.",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "standard_refund_request",
+        "labeler_notes": "Within 30-day window, straightforward case. Clear intent.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 5,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_request_with_escalation_signals",
+        "labeler_notes": "Customer is threatening chargeback, needs specialist review immediately.",
+        "complexity": "hard",
+        "escalation_signals": ["legal_threat", "dispute_threat", "all_caps", "urgent"]
+      }
+    },
+    {
+      "id": 6,
+      "customer_message": "Package arrived damaged. What do I do?",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "clear_delivery_damage_report",
+        "labeler_notes": "Can be auto-handled with standard damage replacement protocol.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 7,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_with_escalation",
+        "labeler_notes": "Customer reports missing package + failed resolution attempts. Needs human investigation.",
+        "complexity": "hard",
+        "escalation_signals": ["all_caps", "blame_brand", "previous_failure"]
+      }
+    },
+    {
+      "id": 8,
+      "customer_message": "This product broke after one week. Very disappointed.",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "quality_complaint_reasonable_tone",
+        "labeler_notes": "Can offer replacement or refund based on warranty terms.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 9,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff!",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "quality_complaint_emotional",
+        "labeler_notes": "Customer is very unhappy and feels scammed. Needs special handling.",
+        "complexity": "medium",
+        "escalation_signals": ["extreme_negative", "feels_cheated", "all_caps"]
+      }
+    },
+    {
+      "id": 10,
+      "customer_message": "I can't log into my account. Can you help me reset my password?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "standard_account_access_issue",
+        "labeler_notes": "Routine password reset request. Can direct to self-service tools.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 11,
+      "customer_message": "My account was hacked and someone ordered $5000 in stuff with my card",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_security_issue",
+        "labeler_notes": "Fraud case. Requires immediate human investigation, large financial impact.",
+        "complexity": "hard",
+        "escalation_signals": ["security_breach", "fraud", "high_value", "urgency"]
+      }
+    },
+    {
+      "id": 12,
+      "customer_message": "Why was I charged twice for my order?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "billing_discrepancy",
+        "labeler_notes": "Can be resolved by looking up transaction history and issuing refund if warranted.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 13,
+      "customer_message": "I've been charged for a cancelled order 4 times! This is fraud!!!",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "repeated_billing_issue_fraud_claim",
+        "labeler_notes": "Multiple failed attempts, fraud claim. Needs specialist review and investigation.",
+        "complexity": "hard",
+        "escalation_signals": ["repeated_issue", "fraud_allegation", "multiple_exclamation"]
+      }
+    },
+    {
+      "id": 14,
+      "customer_message": "How do I return a purchase?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "standard_return_process_inquiry",
+        "labeler_notes": "Routine question. Provide standard return checklist and process.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 15,
+      "customer_message": "I sent the item back 2 weeks ago and still no refund status update",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_follow_up_delayed_refund",
+        "labeler_notes": "Follow-up after return initiated. Needs tracking verification and status clarification.",
+        "complexity": "medium",
+        "escalation_signals": ["follow_up", "delayed_resolution", "time_passed"]
+      }
+    },
+    {
+      "id": 16,
+      "customer_message": "Do you ship to Canada?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_business_question",
+        "labeler_notes": "FAQ item. Easy to answer with standard shipping policy.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 17,
+      "customer_message": "What's your environmental policy?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_company_policy_inquiry",
+        "labeler_notes": "Link to corporate sustainability page.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 18,
+      "customer_message": "Great service! Thank you Amazon!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "positive_feedback_brief",
+        "labeler_notes": "Just acknowledge and thank - no action needed. Brief reply sufficient.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 19,
+      "customer_message": "Best purchase I've made. 10/10 would recommend.",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "strong_positive_feedback",
+        "labeler_notes": "Strong endorsement. Thank customer and possibly ask to review.",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 20,
+      "customer_message": "I need to talk to a manager NOW",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "explicit_escalation_request",
+        "labeler_notes": "Customer explicitly requesting escalation to supervisor. Honor immediately.",
+        "complexity": "easy",
+        "escalation_signals": ["manager_request", "urgency_now"]
+      }
+    }
+  ]
+}
