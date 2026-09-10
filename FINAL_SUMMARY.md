@@ -305,7 +305,6 @@ zip -r hiver-submission.zip hiver/
 # Share link (public GitHub, or private with access)
 ```
 
-Submit via: https://intelligent-bar-256.notion.site/39492cbf0da2800682cfc78a600a745f
 
 ---
 

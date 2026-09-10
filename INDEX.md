@@ -392,4 +392,3 @@ ESCALATION_THRESHOLDS = {
 **Time to Run**: 5 minutes (mock LLM)  
 **License**: Original work (no borrowed code)  
 
-**Submit to**: https://intelligent-bar-256.notion.site/39492cbf0da2800682cfc78a600a745f

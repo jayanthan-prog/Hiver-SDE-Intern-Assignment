@@ -495,6 +495,5 @@ Inspired by industry best practices in MLOPS and NLP evaluation (referenced in d
 
 ---
 
-**Submit Results Here:** https://intelligent-bar-256.notion.site/39492cbf0da2800682cfc78a600a745f
 
 **Questions?** See `/evaluation/failure_analysis.md` for deep dives.
