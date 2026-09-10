@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/blackarch/Downloads/hiver/src/main.py", line 19, in <module>
+    from data_loader import prepare_sample_dataset
+  File "/home/blackarch/Downloads/hiver/src/data_loader.py", line 8, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
