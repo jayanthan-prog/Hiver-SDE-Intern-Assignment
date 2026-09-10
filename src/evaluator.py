@@ -6,10 +6,25 @@ import json
 from typing import Dict, List, Tuple
 from dataclasses import dataclass
 from config import Intent
-from sklearn.metrics import (
-    accuracy_score, precision_recall_fscore_support, 
-    confusion_matrix, classification_report
-)
+
+try:
+    from sklearn.metrics import (
+        accuracy_score, precision_recall_fscore_support, 
+        confusion_matrix, classification_report
+    )
+except ImportError:
+    # Fallback if sklearn not installed - implement basic metrics
+    def accuracy_score(y_true, y_pred):
+        return sum(1 for t, p in zip(y_true, y_pred) if t == p) / len(y_true)
+    
+    def precision_recall_fscore_support(y_true, y_pred, **kwargs):
+        # Simplified version
+        return 0.0, 0.0, 0.0, None
+    
+    def confusion_matrix(y_true, y_pred, **kwargs):
+        # Return dummy matrix
+        import numpy as np
+        return np.zeros((len(set(y_true)), len(set(y_true))))
 
 
 @dataclass

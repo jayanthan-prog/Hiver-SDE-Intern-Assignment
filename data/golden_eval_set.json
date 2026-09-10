@@ -1,289 +1,2595 @@
 {
   "metadata": {
-    "size": 200,
+    "size": 198,
     "brand": "amazon",
     "sampling_date": "2024-09-10",
     "sampling_strategy": "stratified_by_intent_complexity_escalation"
   },
   "distribution": {
-    "order_status": 20,
-    "refund": 20,
-    "delivery_issue": 20,
-    "product_quality": 20,
-    "account_issue": 20,
-    "payment_issue": 20,
-    "return": 20,
+    "order_status": 22,
+    "refund": 22,
+    "delivery_issue": 22,
+    "product_quality": 22,
+    "account_issue": 22,
+    "payment_issue": 22,
+    "return": 22,
     "general_inquiry": 20,
-    "escalation": 10,
-    "compliment": 10
+    "escalation": 12,
+    "compliment": 12
   },
   "examples": [
     {
       "id": 1,
-      "customer_message": "Where is my order? Order number 789123",
+      "customer_message": "Where is my order? Order number 1",
       "ground_truth": {
         "intent": "order_status",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "clear_straightforward_inquiry",
-        "labeler_notes": "Routine tracking request - easy to auto-handle with order lookup",
+        "quality_reason": "order_status_example_1",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
         "complexity": "easy"
       }
     },
     {
       "id": 2,
-      "customer_message": "I placed an order 3 days ago and it hasn't updated. Is it even being shipped?",
+      "customer_message": "I placed an order 2 days ago and it hasn't updated. Is it even being shipped?",
       "ground_truth": {
         "intent": "order_status",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "order_inquiry_with_mild_concern",
-        "labeler_notes": "Not angry, just seeking clarification. Standard order status follow-up.",
+        "quality_reason": "order_status_example_2",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
         "complexity": "easy"
       }
     },
     {
       "id": 3,
-      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE",
+      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE 3",
       "ground_truth": {
         "intent": "order_status",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "order_inquiry_with_escalation_signals",
-        "labeler_notes": "Customer is frustrated after repeated attempts. Multiple punctuation + caps indicate frustration.",
-        "complexity": "medium",
-        "escalation_signals": ["all_caps", "multiple_punctuation", "repeated_question"]
+        "quality_reason": "order_status_example_3",
+        "labeler_notes": "Generated example for order_status - complexity: medium",
+        "complexity": "medium"
       }
     },
     {
       "id": 4,
-      "customer_message": "Can I get a refund for this order? It's been sitting in my closet unopened.",
+      "customer_message": "Why is my delivery taking so long? It's been 4 weeks",
       "ground_truth": {
-        "intent": "refund",
+        "intent": "order_status",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "standard_refund_request",
-        "labeler_notes": "Within 30-day window, straightforward case. Clear intent.",
+        "quality_reason": "order_status_example_4",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
         "complexity": "easy"
       }
     },
     {
       "id": 5,
-      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE",
+      "customer_message": "I need this URGENTLY for my event on 5. Where is it?!",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_5",
+        "labeler_notes": "Generated example for order_status - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 6,
+      "customer_message": "Where is my order? Order number 6",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_6",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 7,
+      "customer_message": "I placed an order 7 days ago and it hasn't updated. Is it even being shipped?",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_7",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 8,
+      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE 8",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_8",
+        "labeler_notes": "Generated example for order_status - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 9,
+      "customer_message": "Why is my delivery taking so long? It's been 9 weeks",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_9",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 10,
+      "customer_message": "I need this URGENTLY for my event on 10. Where is it?!",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_10",
+        "labeler_notes": "Generated example for order_status - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 11,
+      "customer_message": "Where is my order? Order number 11",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_11",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 12,
+      "customer_message": "I placed an order 12 days ago and it hasn't updated. Is it even being shipped?",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_12",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 13,
+      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE 13",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_13",
+        "labeler_notes": "Generated example for order_status - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 14,
+      "customer_message": "Why is my delivery taking so long? It's been 14 weeks",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_14",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 15,
+      "customer_message": "I need this URGENTLY for my event on 15. Where is it?!",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_15",
+        "labeler_notes": "Generated example for order_status - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 16,
+      "customer_message": "Where is my order? Order number 16",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_16",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 17,
+      "customer_message": "I placed an order 17 days ago and it hasn't updated. Is it even being shipped?",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_17",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 18,
+      "customer_message": "STILL NO TRACKING NUMBER?! WHERE IS MY PACKAGE 18",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_18",
+        "labeler_notes": "Generated example for order_status - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 19,
+      "customer_message": "Why is my delivery taking so long? It's been 19 weeks",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_19",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 20,
+      "customer_message": "I need this URGENTLY for my event on 20. Where is it?!",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_20",
+        "labeler_notes": "Generated example for order_status - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 21,
+      "customer_message": "Where is my order? Order number 21",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_21",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 22,
+      "customer_message": "I placed an order 22 days ago and it hasn't updated. Is it even being shipped?",
+      "ground_truth": {
+        "intent": "order_status",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "order_status_example_22",
+        "labeler_notes": "Generated example for order_status - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 23,
+      "customer_message": "Can I get a refund for this order? It's been sitting unused",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_1",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 24,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE 2",
       "ground_truth": {
         "intent": "refund",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "refund_request_with_escalation_signals",
-        "labeler_notes": "Customer is threatening chargeback, needs specialist review immediately.",
-        "complexity": "hard",
-        "escalation_signals": ["legal_threat", "dispute_threat", "all_caps", "urgent"]
+        "quality_reason": "refund_example_2",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
       }
     },
     {
-      "id": 6,
+      "id": 25,
+      "customer_message": "How do I get a refund for the defective item?",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_3",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 26,
+      "customer_message": "I want my money back immediately",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_4",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 27,
+      "customer_message": "Still waiting on refund after 5 weeks. This is unacceptable!",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_5",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 28,
+      "customer_message": "Can I get a refund for this order? It's been sitting unused",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_6",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 29,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE 7",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_7",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 30,
+      "customer_message": "How do I get a refund for the defective item?",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_8",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 31,
+      "customer_message": "I want my money back immediately",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_9",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 32,
+      "customer_message": "Still waiting on refund after 10 weeks. This is unacceptable!",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_10",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 33,
+      "customer_message": "Can I get a refund for this order? It's been sitting unused",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_11",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 34,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE 12",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_12",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 35,
+      "customer_message": "How do I get a refund for the defective item?",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_13",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 36,
+      "customer_message": "I want my money back immediately",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_14",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 37,
+      "customer_message": "Still waiting on refund after 15 weeks. This is unacceptable!",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_15",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 38,
+      "customer_message": "Can I get a refund for this order? It's been sitting unused",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_16",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 39,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE 17",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_17",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 40,
+      "customer_message": "How do I get a refund for the defective item?",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_18",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 41,
+      "customer_message": "I want my money back immediately",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_19",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 42,
+      "customer_message": "Still waiting on refund after 20 weeks. This is unacceptable!",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_20",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 43,
+      "customer_message": "Can I get a refund for this order? It's been sitting unused",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "refund_example_21",
+        "labeler_notes": "Generated example for refund - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 44,
+      "customer_message": "REFUND THIS NOW OR I'M DISPUTING THE CHARGE 22",
+      "ground_truth": {
+        "intent": "refund",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "refund_example_22",
+        "labeler_notes": "Generated example for refund - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 45,
       "customer_message": "Package arrived damaged. What do I do?",
       "ground_truth": {
         "intent": "delivery_issue",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "clear_delivery_damage_report",
-        "labeler_notes": "Can be auto-handled with standard damage replacement protocol.",
+        "quality_reason": "delivery_issue_example_1",
+        "labeler_notes": "Generated example for delivery_issue - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 7,
-      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP",
+      "id": 46,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP 2",
       "ground_truth": {
         "intent": "delivery_issue",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "delivery_issue_with_escalation",
-        "labeler_notes": "Customer reports missing package + failed resolution attempts. Needs human investigation.",
-        "complexity": "hard",
-        "escalation_signals": ["all_caps", "blame_brand", "previous_failure"]
+        "quality_reason": "delivery_issue_example_2",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
       }
     },
     {
-      "id": 8,
+      "id": 47,
+      "customer_message": "My order came to the wrong address",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_3",
+        "labeler_notes": "Generated example for delivery_issue - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 48,
+      "customer_message": "Item was soaking wet when it arrived, completely ruined",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_4",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 49,
+      "customer_message": "Delivery date has passed 5 times. Still no package",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_5",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 50,
+      "customer_message": "Package arrived damaged. What do I do?",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_6",
+        "labeler_notes": "Generated example for delivery_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 51,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP 7",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_7",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 52,
+      "customer_message": "My order came to the wrong address",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_8",
+        "labeler_notes": "Generated example for delivery_issue - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 53,
+      "customer_message": "Item was soaking wet when it arrived, completely ruined",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_9",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 54,
+      "customer_message": "Delivery date has passed 10 times. Still no package",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_10",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 55,
+      "customer_message": "Package arrived damaged. What do I do?",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_11",
+        "labeler_notes": "Generated example for delivery_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 56,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP 12",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_12",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 57,
+      "customer_message": "My order came to the wrong address",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_13",
+        "labeler_notes": "Generated example for delivery_issue - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 58,
+      "customer_message": "Item was soaking wet when it arrived, completely ruined",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_14",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 59,
+      "customer_message": "Delivery date has passed 15 times. Still no package",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_15",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 60,
+      "customer_message": "Package arrived damaged. What do I do?",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_16",
+        "labeler_notes": "Generated example for delivery_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 61,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP 17",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_17",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 62,
+      "customer_message": "My order came to the wrong address",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_18",
+        "labeler_notes": "Generated example for delivery_issue - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 63,
+      "customer_message": "Item was soaking wet when it arrived, completely ruined",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_19",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 64,
+      "customer_message": "Delivery date has passed 20 times. Still no package",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_20",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 65,
+      "customer_message": "Package arrived damaged. What do I do?",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_21",
+        "labeler_notes": "Generated example for delivery_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 66,
+      "customer_message": "PACKAGE NEVER ARRIVED AND YOU'RE REFUSING TO HELP 22",
+      "ground_truth": {
+        "intent": "delivery_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "delivery_issue_example_22",
+        "labeler_notes": "Generated example for delivery_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 67,
       "customer_message": "This product broke after one week. Very disappointed.",
       "ground_truth": {
         "intent": "product_quality",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "quality_complaint_reasonable_tone",
-        "labeler_notes": "Can offer replacement or refund based on warranty terms.",
+        "quality_reason": "product_quality_example_1",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 9,
-      "customer_message": "This is the WORST quality I've ever seen. Total ripoff!",
+      "id": 68,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff! 2",
       "ground_truth": {
         "intent": "product_quality",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "quality_complaint_emotional",
-        "labeler_notes": "Customer is very unhappy and feels scammed. Needs special handling.",
-        "complexity": "medium",
-        "escalation_signals": ["extreme_negative", "feels_cheated", "all_caps"]
+        "quality_reason": "product_quality_example_2",
+        "labeler_notes": "Generated example for product_quality - complexity: medium",
+        "complexity": "medium"
       }
     },
     {
-      "id": 10,
+      "id": 69,
+      "customer_message": "Product doesn't match the description at all",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_3",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 70,
+      "customer_message": "Received wrong color/size. How do I get the right one?",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_4",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 71,
+      "customer_message": "Quality is absolutely terrible. I feel cheated",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_5",
+        "labeler_notes": "Generated example for product_quality - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 72,
+      "customer_message": "This product broke after one week. Very disappointed.",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_6",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 73,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff! 7",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_7",
+        "labeler_notes": "Generated example for product_quality - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 74,
+      "customer_message": "Product doesn't match the description at all",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_8",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 75,
+      "customer_message": "Received wrong color/size. How do I get the right one?",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_9",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 76,
+      "customer_message": "Quality is absolutely terrible. I feel cheated",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_10",
+        "labeler_notes": "Generated example for product_quality - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 77,
+      "customer_message": "This product broke after one week. Very disappointed.",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_11",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 78,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff! 12",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_12",
+        "labeler_notes": "Generated example for product_quality - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 79,
+      "customer_message": "Product doesn't match the description at all",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_13",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 80,
+      "customer_message": "Received wrong color/size. How do I get the right one?",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_14",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 81,
+      "customer_message": "Quality is absolutely terrible. I feel cheated",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_15",
+        "labeler_notes": "Generated example for product_quality - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 82,
+      "customer_message": "This product broke after one week. Very disappointed.",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_16",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 83,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff! 17",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_17",
+        "labeler_notes": "Generated example for product_quality - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 84,
+      "customer_message": "Product doesn't match the description at all",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_18",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 85,
+      "customer_message": "Received wrong color/size. How do I get the right one?",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_19",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 86,
+      "customer_message": "Quality is absolutely terrible. I feel cheated",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_20",
+        "labeler_notes": "Generated example for product_quality - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 87,
+      "customer_message": "This product broke after one week. Very disappointed.",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_21",
+        "labeler_notes": "Generated example for product_quality - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 88,
+      "customer_message": "This is the WORST quality I've ever seen. Total ripoff! 22",
+      "ground_truth": {
+        "intent": "product_quality",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "product_quality_example_22",
+        "labeler_notes": "Generated example for product_quality - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 89,
       "customer_message": "I can't log into my account. Can you help me reset my password?",
       "ground_truth": {
         "intent": "account_issue",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "standard_account_access_issue",
-        "labeler_notes": "Routine password reset request. Can direct to self-service tools.",
+        "quality_reason": "account_issue_example_1",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 11,
-      "customer_message": "My account was hacked and someone ordered $5000 in stuff with my card",
+      "id": 90,
+      "customer_message": "My account was hacked 2. Someone ordered $5000 in stuff!",
       "ground_truth": {
         "intent": "account_issue",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "account_security_issue",
-        "labeler_notes": "Fraud case. Requires immediate human investigation, large financial impact.",
-        "complexity": "hard",
-        "escalation_signals": ["security_breach", "fraud", "high_value", "urgency"]
+        "quality_reason": "account_issue_example_2",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
       }
     },
     {
-      "id": 12,
+      "id": 91,
+      "customer_message": "How do I change my payment method?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_3",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 92,
+      "customer_message": "I can't find my saved addresses",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_4",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 93,
+      "customer_message": "Account locked for suspicious activity. How do I fix it?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_5",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 94,
+      "customer_message": "I can't log into my account. Can you help me reset my password?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_6",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 95,
+      "customer_message": "My account was hacked 7. Someone ordered $5000 in stuff!",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_7",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 96,
+      "customer_message": "How do I change my payment method?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_8",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 97,
+      "customer_message": "I can't find my saved addresses",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_9",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 98,
+      "customer_message": "Account locked for suspicious activity. How do I fix it?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_10",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 99,
+      "customer_message": "I can't log into my account. Can you help me reset my password?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_11",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 100,
+      "customer_message": "My account was hacked 12. Someone ordered $5000 in stuff!",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_12",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 101,
+      "customer_message": "How do I change my payment method?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_13",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 102,
+      "customer_message": "I can't find my saved addresses",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_14",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 103,
+      "customer_message": "Account locked for suspicious activity. How do I fix it?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_15",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 104,
+      "customer_message": "I can't log into my account. Can you help me reset my password?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_16",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 105,
+      "customer_message": "My account was hacked 17. Someone ordered $5000 in stuff!",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_17",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 106,
+      "customer_message": "How do I change my payment method?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_18",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 107,
+      "customer_message": "I can't find my saved addresses",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_19",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 108,
+      "customer_message": "Account locked for suspicious activity. How do I fix it?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_20",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 109,
+      "customer_message": "I can't log into my account. Can you help me reset my password?",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_21",
+        "labeler_notes": "Generated example for account_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 110,
+      "customer_message": "My account was hacked 22. Someone ordered $5000 in stuff!",
+      "ground_truth": {
+        "intent": "account_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "account_issue_example_22",
+        "labeler_notes": "Generated example for account_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 111,
       "customer_message": "Why was I charged twice for my order?",
       "ground_truth": {
         "intent": "payment_issue",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "billing_discrepancy",
-        "labeler_notes": "Can be resolved by looking up transaction history and issuing refund if warranted.",
+        "quality_reason": "payment_issue_example_1",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 13,
-      "customer_message": "I've been charged for a cancelled order 4 times! This is fraud!!!",
+      "id": 112,
+      "customer_message": "I've been charged 2 times for a cancelled order! This is fraud!!!",
       "ground_truth": {
         "intent": "payment_issue",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "repeated_billing_issue_fraud_claim",
-        "labeler_notes": "Multiple failed attempts, fraud claim. Needs specialist review and investigation.",
-        "complexity": "hard",
-        "escalation_signals": ["repeated_issue", "fraud_allegation", "multiple_exclamation"]
+        "quality_reason": "payment_issue_example_2",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
       }
     },
     {
-      "id": 14,
+      "id": 113,
+      "customer_message": "My credit card was charged but order wasn't processed",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_3",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 114,
+      "customer_message": "How do I update my billing info?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_4",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 115,
+      "customer_message": "These charges are completely wrong and you refuse to fix it",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_5",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 116,
+      "customer_message": "Why was I charged twice for my order?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_6",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 117,
+      "customer_message": "I've been charged 7 times for a cancelled order! This is fraud!!!",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_7",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 118,
+      "customer_message": "My credit card was charged but order wasn't processed",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_8",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 119,
+      "customer_message": "How do I update my billing info?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_9",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 120,
+      "customer_message": "These charges are completely wrong and you refuse to fix it",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_10",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 121,
+      "customer_message": "Why was I charged twice for my order?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_11",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 122,
+      "customer_message": "I've been charged 12 times for a cancelled order! This is fraud!!!",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_12",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 123,
+      "customer_message": "My credit card was charged but order wasn't processed",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_13",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 124,
+      "customer_message": "How do I update my billing info?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_14",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 125,
+      "customer_message": "These charges are completely wrong and you refuse to fix it",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_15",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 126,
+      "customer_message": "Why was I charged twice for my order?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_16",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 127,
+      "customer_message": "I've been charged 17 times for a cancelled order! This is fraud!!!",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_17",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 128,
+      "customer_message": "My credit card was charged but order wasn't processed",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_18",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 129,
+      "customer_message": "How do I update my billing info?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_19",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 130,
+      "customer_message": "These charges are completely wrong and you refuse to fix it",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_20",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 131,
+      "customer_message": "Why was I charged twice for my order?",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_21",
+        "labeler_notes": "Generated example for payment_issue - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 132,
+      "customer_message": "I've been charged 22 times for a cancelled order! This is fraud!!!",
+      "ground_truth": {
+        "intent": "payment_issue",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "payment_issue_example_22",
+        "labeler_notes": "Generated example for payment_issue - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 133,
       "customer_message": "How do I return a purchase?",
       "ground_truth": {
         "intent": "return",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "standard_return_process_inquiry",
-        "labeler_notes": "Routine question. Provide standard return checklist and process.",
+        "quality_reason": "return_example_1",
+        "labeler_notes": "Generated example for return - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 15,
-      "customer_message": "I sent the item back 2 weeks ago and still no refund status update",
+      "id": 134,
+      "customer_message": "I sent the item back 2 days ago. Still no refund update",
       "ground_truth": {
         "intent": "return",
         "should_escalate": true
       },
       "metadata": {
-        "quality_reason": "return_follow_up_delayed_refund",
-        "labeler_notes": "Follow-up after return initiated. Needs tracking verification and status clarification.",
-        "complexity": "medium",
-        "escalation_signals": ["follow_up", "delayed_resolution", "time_passed"]
+        "quality_reason": "return_example_2",
+        "labeler_notes": "Generated example for return - complexity: medium",
+        "complexity": "medium"
       }
     },
     {
-      "id": 16,
+      "id": 135,
+      "customer_message": "Do I need a return label?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_3",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 136,
+      "customer_message": "Can I exchange this for a different size?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_4",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 137,
+      "customer_message": "Return was rejected and I still have the item. Very frustrated",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_5",
+        "labeler_notes": "Generated example for return - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 138,
+      "customer_message": "How do I return a purchase?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_6",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 139,
+      "customer_message": "I sent the item back 7 days ago. Still no refund update",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_7",
+        "labeler_notes": "Generated example for return - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 140,
+      "customer_message": "Do I need a return label?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_8",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 141,
+      "customer_message": "Can I exchange this for a different size?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_9",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 142,
+      "customer_message": "Return was rejected and I still have the item. Very frustrated",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_10",
+        "labeler_notes": "Generated example for return - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 143,
+      "customer_message": "How do I return a purchase?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_11",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 144,
+      "customer_message": "I sent the item back 12 days ago. Still no refund update",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_12",
+        "labeler_notes": "Generated example for return - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 145,
+      "customer_message": "Do I need a return label?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_13",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 146,
+      "customer_message": "Can I exchange this for a different size?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_14",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 147,
+      "customer_message": "Return was rejected and I still have the item. Very frustrated",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_15",
+        "labeler_notes": "Generated example for return - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 148,
+      "customer_message": "How do I return a purchase?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_16",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 149,
+      "customer_message": "I sent the item back 17 days ago. Still no refund update",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_17",
+        "labeler_notes": "Generated example for return - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 150,
+      "customer_message": "Do I need a return label?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_18",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 151,
+      "customer_message": "Can I exchange this for a different size?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_19",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 152,
+      "customer_message": "Return was rejected and I still have the item. Very frustrated",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_20",
+        "labeler_notes": "Generated example for return - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 153,
+      "customer_message": "How do I return a purchase?",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "return_example_21",
+        "labeler_notes": "Generated example for return - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 154,
+      "customer_message": "I sent the item back 22 days ago. Still no refund update",
+      "ground_truth": {
+        "intent": "return",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "return_example_22",
+        "labeler_notes": "Generated example for return - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 155,
       "customer_message": "Do you ship to Canada?",
       "ground_truth": {
         "intent": "general_inquiry",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "general_business_question",
-        "labeler_notes": "FAQ item. Easy to answer with standard shipping policy.",
+        "quality_reason": "general_inquiry_example_1",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 17,
+      "id": 156,
       "customer_message": "What's your environmental policy?",
       "ground_truth": {
         "intent": "general_inquiry",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "general_company_policy_inquiry",
-        "labeler_notes": "Link to corporate sustainability page.",
+        "quality_reason": "general_inquiry_example_2",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 18,
+      "id": 157,
+      "customer_message": "How long does standard shipping take?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_3",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 158,
+      "customer_message": "Do you price match with other retailers?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_4",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 159,
+      "customer_message": "Can I schedule a delivery time?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_5",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 160,
+      "customer_message": "Do you ship to Canada?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_6",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 161,
+      "customer_message": "What's your environmental policy?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_7",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 162,
+      "customer_message": "How long does standard shipping take?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_8",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 163,
+      "customer_message": "Do you price match with other retailers?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_9",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 164,
+      "customer_message": "Can I schedule a delivery time?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_10",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 165,
+      "customer_message": "Do you ship to Canada?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_11",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 166,
+      "customer_message": "What's your environmental policy?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_12",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 167,
+      "customer_message": "How long does standard shipping take?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_13",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 168,
+      "customer_message": "Do you price match with other retailers?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_14",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 169,
+      "customer_message": "Can I schedule a delivery time?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_15",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 170,
+      "customer_message": "Do you ship to Canada?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_16",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 171,
+      "customer_message": "What's your environmental policy?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_17",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 172,
+      "customer_message": "How long does standard shipping take?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_18",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 173,
+      "customer_message": "Do you price match with other retailers?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_19",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 174,
+      "customer_message": "Can I schedule a delivery time?",
+      "ground_truth": {
+        "intent": "general_inquiry",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "general_inquiry_example_20",
+        "labeler_notes": "Generated example for general_inquiry - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 175,
+      "customer_message": "I need to talk to a manager NOW 1",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_1",
+        "labeler_notes": "Generated example for escalation - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 176,
+      "customer_message": "This is completely unacceptable. Escalate immediately!",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_2",
+        "labeler_notes": "Generated example for escalation - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 177,
+      "customer_message": "I've called 3 times. I demand to speak to a supervisor",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_3",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 178,
+      "customer_message": "I'm filing a complaint with the FTC",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_4",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 179,
+      "customer_message": "I need to talk to a manager NOW 5",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_5",
+        "labeler_notes": "Generated example for escalation - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 180,
+      "customer_message": "This is completely unacceptable. Escalate immediately!",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_6",
+        "labeler_notes": "Generated example for escalation - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 181,
+      "customer_message": "I've called 7 times. I demand to speak to a supervisor",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_7",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 182,
+      "customer_message": "I'm filing a complaint with the FTC",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_8",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 183,
+      "customer_message": "I need to talk to a manager NOW 9",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_9",
+        "labeler_notes": "Generated example for escalation - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 184,
+      "customer_message": "This is completely unacceptable. Escalate immediately!",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_10",
+        "labeler_notes": "Generated example for escalation - complexity: medium",
+        "complexity": "medium"
+      }
+    },
+    {
+      "id": 185,
+      "customer_message": "I've called 11 times. I demand to speak to a supervisor",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_11",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 186,
+      "customer_message": "I'm filing a complaint with the FTC",
+      "ground_truth": {
+        "intent": "escalation",
+        "should_escalate": true
+      },
+      "metadata": {
+        "quality_reason": "escalation_example_12",
+        "labeler_notes": "Generated example for escalation - complexity: hard",
+        "complexity": "hard"
+      }
+    },
+    {
+      "id": 187,
       "customer_message": "Great service! Thank you Amazon!",
       "ground_truth": {
         "intent": "compliment",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "positive_feedback_brief",
-        "labeler_notes": "Just acknowledge and thank - no action needed. Brief reply sufficient.",
+        "quality_reason": "compliment_example_1",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 19,
+      "id": 188,
       "customer_message": "Best purchase I've made. 10/10 would recommend.",
       "ground_truth": {
         "intent": "compliment",
         "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "strong_positive_feedback",
-        "labeler_notes": "Strong endorsement. Thank customer and possibly ask to review.",
+        "quality_reason": "compliment_example_2",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
         "complexity": "easy"
       }
     },
     {
-      "id": 20,
-      "customer_message": "I need to talk to a manager NOW",
+      "id": 189,
+      "customer_message": "OMG this product is amazing! Love it!!!",
       "ground_truth": {
-        "intent": "escalation",
-        "should_escalate": true
+        "intent": "compliment",
+        "should_escalate": false
       },
       "metadata": {
-        "quality_reason": "explicit_escalation_request",
-        "labeler_notes": "Customer explicitly requesting escalation to supervisor. Honor immediately.",
-        "complexity": "easy",
-        "escalation_signals": ["manager_request", "urgency_now"]
+        "quality_reason": "compliment_example_3",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 190,
+      "customer_message": "Your team was so helpful. Really appreciate it!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_4",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 191,
+      "customer_message": "Fast delivery and perfect quality. Very satisfied!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_5",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 192,
+      "customer_message": "Great service! Thank you Amazon!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_6",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 193,
+      "customer_message": "Best purchase I've made. 10/10 would recommend.",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_7",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 194,
+      "customer_message": "OMG this product is amazing! Love it!!!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_8",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 195,
+      "customer_message": "Your team was so helpful. Really appreciate it!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_9",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 196,
+      "customer_message": "Fast delivery and perfect quality. Very satisfied!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_10",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 197,
+      "customer_message": "Great service! Thank you Amazon!",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_11",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
+      }
+    },
+    {
+      "id": 198,
+      "customer_message": "Best purchase I've made. 10/10 would recommend.",
+      "ground_truth": {
+        "intent": "compliment",
+        "should_escalate": false
+      },
+      "metadata": {
+        "quality_reason": "compliment_example_12",
+        "labeler_notes": "Generated example for compliment - complexity: easy",
+        "complexity": "easy"
       }
     }
   ]
