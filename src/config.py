@@ -4,6 +4,7 @@ Core configuration and constants for the support agent.
 
 from enum import Enum
 from typing import List
+from pathlib import Path
 
 # ============= BRAND SELECTION =============
 # Selected brand: Amazon (highest volume, diverse issue types)
@@ -68,7 +69,8 @@ MAX_TOKENS_CLASSIFY = 100
 # ============= DATA PATHS =============
 RAW_DATA_DIR = "data/raw"
 PROCESSED_DATA_DIR = "data/processed"
-GOLDEN_SET_PATH = "data/golden_eval_set.json"
+_PROJECT_ROOT = Path(__file__).parent.parent
+GOLDEN_SET_PATH = str(_PROJECT_ROOT / "data" / "golden_eval_set.json")
 SAMPLE_PATH = "data/sample_tweets.json"
 RESULTS_DIR = "results"
 
